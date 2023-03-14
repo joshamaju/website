@@ -1,23 +1,43 @@
 <header class="header">
-  <div class="brand">
-    <h3>J/A</h3>
+  <div class="container mx-auto header-wrapper">
+    <div class="brand">
+      <h3>J/A</h3>
+    </div>
+
+    <nav class="nav">
+      <ul class="nav__links space-x-10">
+        <li class="nav__link">
+          <a href="/" class="link">Home</a>
+        </li>
+
+        <li class="nav__link">
+          <a href="/craft" class="link">Craft</a>
+        </li>
+
+        <li class="nav__link">
+          <a href="/contact" class="link">Contact</a>
+        </li>
+      </ul>
+    </nav>
   </div>
-
-  <nav class="nav">
-    <ul class="nav__links">
-      <li class="nav__link">
-        <a href="/" class="link">Home</a>
-      </li>
-
-      <li class="nav__link">
-        <a href="/craft" class="link">Craft</a>
-      </li>
-
-      <li class="nav__link">
-        <a href="/contact" class="link">Contact</a>
-      </li>
-    </ul>
-  </nav>
 </header>
 
-<style></style>
+<style>
+  .header {
+    background-color: #383838;
+    backdrop-filter: blur(10px);
+  }
+
+  .header-wrapper {
+    display: flex;
+    color: #fff;
+    align-items: center;
+    padding: 0.7rem 1rem;
+    justify-content: space-between;
+  }
+
+  .nav__links {
+    display: flex;
+    align-items: center;
+  }
+</style>
