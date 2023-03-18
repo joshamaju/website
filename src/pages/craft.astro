@@ -1,8 +1,10 @@
 ---
-import "../styles/global.css";
 import Header from "../components/header.astro";
+import "../styles/global.css";
 
-const content = new Array(10).fill(0).map((_, i) => i);
+import { getCollection } from "astro:content";
+
+const craft = await getCollection("craft");
 ---
 
 <!DOCTYPE html>
@@ -19,23 +21,36 @@ const content = new Array(10).fill(0).map((_, i) => i);
     <main class="container mx-auto space-y-6 px-4 py-10">
       <h2 class="text-white text-4xl font-semibold">Craft</h2>
 
-      <ul class="crafts">
-        {
-          content.map((n) => {
-            return (
-              <li class="craft">
-                <div class="preview" />
+      {
+        craft.length > 0 ? (
+          <ul class="crafts">
+            {craft.map(({ slug, data }) => {
+              const craft = data as { video: string; title: string };
 
-                <div class="title-container">
-                  <h4 class="title">
-                    <a href="#">Title {n}</a>
-                  </h4>
-                </div>
-              </li>
-            );
-          })
-        }
-      </ul>
+              return (
+                <li class="craft">
+                  <video
+                    loop
+                    autoplay
+                    playsinline
+                    class="preview"
+                    controls={false}
+                    src={craft.video}
+                  />
+
+                  <div class="title-container">
+                    <h4 class="title">
+                      <a href={`/craft/${slug}`}>{craft.title}</a>
+                    </h4>
+                  </div>
+                </li>
+              );
+            })}
+          </ul>
+        ) : (
+          <h4 class="text-white text-xl">No Content</h4>
+        )
+      }
     </main>
   </body>
 </html>
@@ -45,20 +60,6 @@ const content = new Array(10).fill(0).map((_, i) => i);
   body {
     min-height: 100vh;
   }
-
-  /* @media screen and (min-width: 768px) {
-    html,
-    body {
-      height: 100%;
-    }
-  } */
-
-  /* @media screen and (min-width: 768px) {
-    .page {
-      display: grid;
-      grid-template-rows: auto 1fr;
-    }
-  } */
 
   .crafts > * + * {
     margin-top: 1rem;
@@ -82,10 +83,13 @@ const content = new Array(10).fill(0).map((_, i) => i);
     overflow: hidden;
     position: relative;
     border-radius: 1rem;
+    border: 0.2px solid theme(colors.gray.600);
   }
 
   .preview {
+    width: 100%;
     height: 15rem;
+    object-fit: cover;
     background-color: theme(colors.gray.500);
   }
 
