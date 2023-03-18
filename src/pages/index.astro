@@ -1,13 +1,123 @@
 ---
 import "../styles/global.css";
+import "../styles/home.mobile.css";
 import Header from "../components/header.astro";
 ---
 
-<div class="page page-dark">
-  <Header />
-</div>
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta http-equiv="X-UA-Compatible" content="IE=edge" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Joshua Amaju | Home</title>
+  </head>
+  <body>
+    <div class="page page-dark">
+      <Header />
+
+      <main class="body container mx-auto">
+        <aside class="photo">
+          <div class="bg-gray-500 image"></div>
+        </aside>
+
+        <section class="description">
+          <div class="my-auto space-y-16">
+            <div class="space-y-12">
+              <h1
+                class="lg:text-7xl text-5xl font-extrabold text-[var(--color-accent)]"
+              >
+                Joshua Amaju
+              </h1>
+
+              <p class="text-xl">
+                I like building interactive applications, interested in
+                functional programming (fp-ts) and application architecture.
+
+                <br />
+                <br />
+
+                I enjoy discovering new cultures and music.
+              </p>
+            </div>
+
+            <ul class="socials space-x-10">
+              <li class="social">
+                <a href="#" target="_blank" rel="noopener noreferrer"
+                  >Linkedin</a
+                >
+              </li>
+
+              <li class="social">
+                <a href="#" target="_blank" rel="noopener noreferrer"
+                  >Instagram</a
+                >
+              </li>
+            </ul>
+          </div>
+        </section>
+      </main>
+    </div>
+  </body>
+</html>
 
 <style>
-  .page {
+  @media screen and (min-width: 768px) {
+    html,
+    body {
+      height: 100%;
+    }
+  }
+
+  @media screen and (min-width: 768px) {
+    .page {
+      display: grid;
+      grid-template-rows: auto 1fr;
+    }
+  }
+
+  @media screen and (min-width: 768px) {
+    .body {
+      display: grid;
+      overflow: hidden;
+      grid-template-columns: 45% 1fr;
+      grid-template-areas: "photo description";
+    }
+  }
+
+  .photo {
+    display: flex;
+    grid-area: photo;
+  }
+
+  .image {
+    width: 100%;
+    margin: auto;
+    height: 30rem;
+  }
+
+  @media screen and (min-width: 768px) {
+    .image {
+      width: 25rem;
+    }
+  }
+
+  .description {
+    color: #fff;
+    display: flex;
+    overflow: auto;
+    padding: 4rem 2rem;
+    grid-area: description;
+  }
+
+  .socials {
+    display: flex;
+    align-items: flex-end;
+  }
+
+  .social > :global(a) {
+    text-decoration: underline;
+    text-underline-offset: 0.3rem;
+    text-decoration-color: var(--color-accent);
   }
 </style>
