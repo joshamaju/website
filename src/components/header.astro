@@ -1,0 +1,73 @@
+<header class="header">
+  <div class="container mx-auto header-wrapper">
+    <div class="brand">
+      <h3 class="text-2xl font-bold">
+        <a href="/">J/A</a>
+      </h3>
+    </div>
+
+    <nav class="nav">
+      <ul class="nav__links space-x-10">
+        <li class="nav__link">
+          <a href="/" class="link">Home</a>
+        </li>
+
+        <li class="nav__link">
+          <a href="/craft" class="link">Craft</a>
+        </li>
+
+        <li class="nav__link">
+          <a href="mailto:joshsemail4work@gmail.com" class="link">Contact</a>
+        </li>
+      </ul>
+    </nav>
+  </div>
+</header>
+
+<style>
+  .header {
+    top: 0;
+    z-index: 10;
+    position: sticky;
+    backdrop-filter: blur(20px);
+    background-color: #383838a8;
+  }
+
+  .header::after {
+    left: 0;
+    right: 0;
+    top: 100%;
+    content: "";
+    height: 1px;
+    position: absolute;
+    background: linear-gradient(to right, transparent, #ccc9dca8, transparent);
+  }
+
+  .header-wrapper {
+    display: flex;
+    color: #fff;
+    padding: 0.7rem 1rem;
+    flex-direction: column;
+    justify-content: space-between;
+  }
+
+  .nav {
+    align-self: flex-end;
+  }
+
+  @media screen and (min-width: 768px) {
+    .header-wrapper {
+      flex-direction: row;
+      align-items: center;
+    }
+  }
+
+  .brand {
+    font-family: "Rubik", sans-serif;
+  }
+
+  .nav__links {
+    display: flex;
+    align-items: center;
+  }
+</style>
