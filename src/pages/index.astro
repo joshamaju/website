@@ -1,6 +1,11 @@
 ---
 import "../styles/global.css";
 import Header from "../components/header.astro";
+import Fonts from "../components/fonts.astro";
+
+import * as social from "../components/about/social.md";
+import * as about from "../components/about/summary.md";
+import { Content as About } from "../components/about/summary.md";
 ---
 
 <!DOCTYPE html>
@@ -9,27 +14,44 @@ import Header from "../components/header.astro";
     <meta charset="UTF-8" />
     <meta http-equiv="X-UA-Compatible" content="IE=edge" />
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <Fonts />
     <title>Joshua Amaju | Home</title>
   </head>
   <body class="page-dark">
     <div class="page">
       <Header />
 
-      <main class="body container mx-auto">
+      <main class="body lg:max-w-[80%] mx-auto">
         <aside class="photo">
-          <div class="bg-gray-500 image"></div>
+          <div
+            class="bg-gray-500 image"
+            style={{ backgroundImage: "url(me.jpg)" }}
+          >
+          </div>
         </aside>
 
         <section class="description">
           <div class="my-auto space-y-16">
             <div class="space-y-12">
-              <h1
-                class="lg:text-7xl text-5xl font-extrabold text-[var(--color-accent)]"
-              >
-                Joshua Amaju
-              </h1>
+              <div class="space-y-4">
+                <h1
+                  class="lg:text-4xl text-2xl font-bold text-[var(--color-accent)] title"
+                >
+                  Hi there, I'm
+                </h1>
 
-              <p class="text-xl">
+                <h1
+                  class="lg:text-7xl text-5xl font-extrabold text-white title"
+                >
+                  Joshua Amaju
+                </h1>
+              </div>
+
+              <div class="about space-y-2">
+                <About />
+              </div>
+
+              <!-- <p class="text-xl">
                 I like building interactive applications, interested in
                 functional programming (fp-ts) and application architecture.
 
@@ -37,11 +59,11 @@ import Header from "../components/header.astro";
                 <br />
 
                 I enjoy discovering new cultures and music.
-              </p>
+              </p> -->
             </div>
 
             <ul class="socials space-x-10">
-              <li class="social">
+              <!-- <li class="social">
                 <a
                   href="https://www.linkedin.com/in/joshua-amaju-555b32b6/"
                   target="_blank"
@@ -55,72 +77,103 @@ import Header from "../components/header.astro";
                   target="_blank"
                   rel="noopener noreferrer">Instagram</a
                 >
+              </li> -->
+
+              <li class="social">
+                <a
+                  target="_blank"
+                  href={social.frontmatter.linkedin}
+                  rel="noopener noreferrer">Linkedin</a
+                >
+              </li>
+
+              <li class="social">
+                <a
+                  target="_blank"
+                  href={social.frontmatter.instagram}
+                  rel="noopener noreferrer">Instagram</a
+                >
+              </li>
+
+              <li class="social">
+                <a
+                  target="_blank"
+                  href={social.frontmatter.github}
+                  rel="noopener noreferrer">GitHub</a
+                >
               </li>
             </ul>
           </div>
         </section>
       </main>
     </div>
+    <style>
+      @media screen and (min-width: 768px) {
+        html,
+        body {
+          height: 100%;
+        }
+      }
+
+      @media screen and (min-width: 768px) {
+        .page {
+          display: grid;
+          grid-template-rows: auto 1fr;
+        }
+      }
+
+      @media screen and (min-width: 768px) {
+        .body {
+          display: grid;
+          overflow: hidden;
+          grid-template-columns: 45% 1fr;
+          grid-template-areas: "photo description";
+        }
+      }
+
+      .photo {
+        display: flex;
+        grid-area: photo;
+      }
+
+      .image {
+        width: 100%;
+        margin: auto;
+        height: 35rem;
+        border-radius: 0.7rem;
+        background-size: cover;
+        background-position: center;
+        background-repeat: no-repeat;
+      }
+
+      @media screen and (min-width: 768px) {
+        .image {
+          width: 25rem;
+        }
+      }
+
+      .description {
+        color: #fff;
+        display: flex;
+        overflow: auto;
+        padding: 4rem 2rem;
+        grid-area: description;
+      }
+
+      .title {
+        font-family: "Rubik", sans-serif;
+      }
+
+      .socials {
+        display: flex;
+        align-items: flex-end;
+      }
+
+      :is(.social, .about) :global(a) {
+        text-decoration: underline;
+        text-underline-offset: 0.3rem;
+        text-decoration-color: var(--color-accent);
+      }
+    </style>
   </body>
 </html>
-
-<style>
-  @media screen and (min-width: 768px) {
-    html,
-    body {
-      height: 100%;
-    }
-  }
-
-  @media screen and (min-width: 768px) {
-    .page {
-      display: grid;
-      grid-template-rows: auto 1fr;
-    }
-  }
-
-  @media screen and (min-width: 768px) {
-    .body {
-      display: grid;
-      overflow: hidden;
-      grid-template-columns: 45% 1fr;
-      grid-template-areas: "photo description";
-    }
-  }
-
-  .photo {
-    display: flex;
-    grid-area: photo;
-  }
-
-  .image {
-    width: 100%;
-    margin: auto;
-    height: 30rem;
-  }
-
-  @media screen and (min-width: 768px) {
-    .image {
-      width: 25rem;
-    }
-  }
-
-  .description {
-    color: #fff;
-    display: flex;
-    overflow: auto;
-    padding: 4rem 2rem;
-    grid-area: description;
-  }
-
-  .socials {
-    display: flex;
-    align-items: flex-end;
-  }
-
-  .social > :global(a) {
-    text-decoration: underline;
-    text-underline-offset: 0.3rem;
-    text-decoration-color: var(--color-accent);
-  }
-</style>
