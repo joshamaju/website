@@ -3,6 +3,7 @@ import "../styles/global.css";
 
 import Fonts from "../components/fonts.astro";
 import Header from "../components/header.astro";
+import Favicon from "../components/favicon.astro";
 
 import { getCollection } from "astro:content";
 
@@ -16,6 +17,7 @@ const craft = await getCollection("craft");
     <meta http-equiv="X-UA-Compatible" content="IE=edge" />
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
     <Fonts />
+    <Favicon />
     <title>Joshua Amaju | Craft</title>
   </head>
   <body class="page-dark">
@@ -58,57 +60,58 @@ const craft = await getCollection("craft");
         )
       }
     </main>
-  </body><style>
-    html,
-    body {
-      min-height: 100vh;
-    }
-
-    .crafts > * + * {
-      margin-top: 1rem;
-    }
-
-    @media screen and (min-width: 768px) {
-      .crafts {
-        gap: 2rem;
-        display: grid;
-        grid-template-columns: 1fr 1fr;
+    <style>
+      html,
+      body {
+        min-height: 100vh;
       }
 
-      @supports (display: grid) {
-        .crafts > * + * {
-          margin-top: 0;
+      .crafts > * + * {
+        margin-top: 1rem;
+      }
+
+      @media screen and (min-width: 768px) {
+        .crafts {
+          gap: 2rem;
+          display: grid;
+          grid-template-columns: 1fr 1fr;
+        }
+
+        @supports (display: grid) {
+          .crafts > * + * {
+            margin-top: 0;
+          }
         }
       }
-    }
 
-    .craft {
-      overflow: hidden;
-      position: relative;
-      border-radius: 0.4rem;
-      border: 0.2px solid theme(colors.gray.600);
-    }
+      .craft {
+        overflow: hidden;
+        position: relative;
+        border-radius: 0.4rem;
+        border: 0.2px solid theme(colors.gray.600);
+      }
 
-    .preview {
-      width: 100%;
-      height: 15rem;
-      object-fit: cover;
-      background-color: theme(colors.gray.500);
-    }
+      .preview {
+        width: 100%;
+        height: 15rem;
+        object-fit: cover;
+        background-color: theme(colors.gray.500);
+      }
 
-    .title-container {
-      left: 0;
-      right: 0;
-      bottom: 0;
-      position: absolute;
-      padding: 0.4rem 1rem;
-      background-color: theme(colors.gray.600/0.4);
-    }
+      .title-container {
+        left: 0;
+        right: 0;
+        bottom: 0;
+        position: absolute;
+        padding: 0.4rem 1rem;
+        background-color: theme(colors.gray.600/0.4);
+      }
 
-    .title {
-      color: #fff;
-      font-weight: 600;
-      font-size: theme(fontSize.lg);
-    }
-  </style>
+      .title {
+        color: #fff;
+        font-weight: 600;
+        font-size: theme(fontSize.lg);
+      }
+    </style>
+  </body>
 </html>

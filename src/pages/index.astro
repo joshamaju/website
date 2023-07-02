@@ -1,10 +1,10 @@
 ---
-import "../styles/global.css";
-import Header from "../components/header.astro";
 import Fonts from "../components/fonts.astro";
+import Favicon from "../components/favicon.astro";
+import Header from "../components/header.astro";
+import "../styles/global.css";
 
 import * as social from "../components/about/social.md";
-import * as about from "../components/about/summary.md";
 import { Content as About } from "../components/about/summary.md";
 ---
 
@@ -15,6 +15,7 @@ import { Content as About } from "../components/about/summary.md";
     <meta http-equiv="X-UA-Compatible" content="IE=edge" />
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
     <Fonts />
+    <Favicon />
     <title>Joshua Amaju | Home</title>
   </head>
   <body class="page-dark">
