@@ -7,7 +7,7 @@ import Favicon from "../components/favicon.astro";
 
 import { getCollection } from "astro:content";
 
-const craft = await getCollection("craft");
+// const craft = await getCollection("craft");
 ---
 
 <!DOCTYPE html>
@@ -26,7 +26,9 @@ const craft = await getCollection("craft");
     <main class="container mx-auto space-y-6 px-4 py-10">
       <h2 class="text-white text-4xl font-semibold">Craft</h2>
 
-      {
+      <h4 class="text-white text-xl">No Content</h4>
+
+      <!-- {
         craft.length > 0 ? (
           <ul class="crafts">
             {craft.map(({ slug, data }) => {
@@ -58,7 +60,7 @@ const craft = await getCollection("craft");
         ) : (
           <h4 class="text-white text-xl">No Content</h4>
         )
-      }
+      } -->
     </main>
     <style>
       html,
