@@ -7,7 +7,7 @@ import Favicon from "../components/favicon.astro";
 
 import { getCollection } from "astro:content";
 
-// const craft = await getCollection("craft");
+const craft = await getCollection("craft");
 ---
 
 <!DOCTYPE html>
@@ -26,33 +26,19 @@ import { getCollection } from "astro:content";
     <main class="container mx-auto space-y-6 px-4 py-10">
       <h2 class="text-white text-4xl font-semibold">Craft</h2>
 
-      <h4 class="text-white text-xl">No Content</h4>
-
-      <!-- {
+      {
         craft.length > 0 ? (
-          <ul class="crafts">
+          <ul class="crafts divide-y">
             {craft.map(({ slug, data }) => {
               const craft = data;
 
               return (
-                <li class="craft">
-                  {craft.video ? (
-                    <video
-                      loop
-                      muted
-                      autoplay
-                      playsinline
-                      class="preview"
-                      controls={false}
-                      src={craft.video}
-                    />
-                  ) : null}
-
-                  <div class="title-container">
-                    <h4 class="title">
-                      <a href={`/craft/${slug}`}>{craft.title}</a>
+                <li class="space-y-2">
+                  <h4 class="title">
+                      <a href={craft.link} target="_blank" rel="noopener noreferrer">{craft.title}</a>
                     </h4>
-                  </div>
+
+                    <p>{craft.description}</p>
                 </li>
               );
             })}
@@ -60,7 +46,7 @@ import { getCollection } from "astro:content";
         ) : (
           <h4 class="text-white text-xl">No Content</h4>
         )
-      } -->
+      }
     </main>
     <style>
       html,

@@ -8,11 +8,11 @@ html,
 body {
   margin: 0;
   line-height: 1.5;
-  font-family: 'DM Sans', Arial, Helvetica, sans-serif;
+  font-family: "DM Sans", Arial, Helvetica, sans-serif;
 }
 
 :root {
-    --color-accent: #CCC9DC;
+  --color-accent: #ccc9dc;
 }
 
 .page {
@@ -20,5 +20,6 @@ body {
 }
 
 .page-dark {
-    background-color: #000;
+  color: #fff;
+  background-color: #000;
 }
